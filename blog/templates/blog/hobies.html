@@ -1,0 +1,49 @@
+        {% extends "Base.html" %}
+        {% load static %}
+        {% block title %}<title>My Hobies</title>{% endblock title %}
+        {% block content %}
+        <div class="kategoriler" id="information_scroll" style="background-color: rgba(104, 114, 114, 0.58); border:3px solid grey;">
+            <h6 id="my_hobies" style="width:100%; margin-left:1rem;margin-top: 0.3rem; ">Categories:</h6>
+            {% include "blog/bilesenler/_kategoriler.html" %}
+        </div>
+        <div class="information" id="information_scroll" style="background-color: rgba(104, 114, 114, 0.58); border:3px solid grey;">
+            <h5 id="my_hobies" style="font-size:1.7vw; width:100%; margin-left:1rem;margin-top: 0.3rem; ">My Hobies:</h5>
+            <ul id="hobies" style="padding-left: 1rem; padding-right: 0.3rem;">
+                {% if kullanilacakveriler|length > 0 %}
+                    {% for item in kullanilacakveriler %}
+                        {% comment %} {% if item.is_showed %} {% endcomment %}
+                            {% include "blog/bilesenler/_liste.html" %}
+                        {% comment %} {% endif %} {% endcomment %}
+                    {% endfor %}
+                {% else %}
+                <div class="list_scroll" id="{{item.yol}}-{{item.id}}">
+                    <li class="hobies">
+                        <u style="margin-left:1vw;">
+                            Not found hobies {{selected_kategori|title}}
+                        </u>
+                        <a href="{% url "hobies" %}" >
+                        <img class="hobies_photos" src="{% static 'img/moon2.png' %}" alt="moon2.png">
+                        </a>
+                        <ul style="font-size:1.2vw; margin-left:9vw; list-style-type:none;margin-bottom:2vh;">
+                            <li>Not Found Any Hobies {{selected_kategori|title}}...</li>
+                        </ul>
+                    </li>
+                </div>
+                {% endif %}
+            </ul> 
+        </div>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        {% endblock content %}
+        {% block active_button %}
+        <li class="nav-item">
+            <a class="nav-link texttype-times" href="{% url "home" %}" ><b>Home</b></a>
+        </li>
+        <li class="nav-item texttype-times">
+            <a class="nav-link" href="{% url "hobies" %}" id="active"><b>My Hobbies</b></a>
+        </li>
+        <li class="nav-item texttype-times">
+            <a class="nav-link" href="{% url "about" %}"><b>About Me</b></a>
+        </li>
+        {% endblock active_button %}

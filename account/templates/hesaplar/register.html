@@ -1,0 +1,52 @@
+{% extends "Account.html" %}
+{% load static %}
+{% block title %}<title>register</title>{% endblock title %}
+{% block account %}
+<div class="signin"> 
+  
+    <div class="content"> 
+
+     <h2>Register</h2> 
+
+     <form class="form"  method="POST"> 
+        {% csrf_token %}
+        {% if error %}
+        <div class="alert alert-danger">
+            {{error}}
+        </div>
+        {% endif %}
+        <div class="inputBox"> 
+            <input type="text"  name="firstname" value="{{name}}"> <i>Name</i> 
+           </div> 
+        <div class="inputBox"> 
+       <input type="text"  name="lastname" value="{{lastname}}"> <i>Last name</i> 
+      </div> 
+      <div class="inputBox"> 
+       <input type="text"  name="username" value="{{username}}"> <i>Username</i> 
+      </div> 
+      <div class="inputBox"> 
+        <input type="text"  name="gmail" value="{{gmail}}"> <i>Gmail</i> 
+       </div> 
+      <div class="inputBox"> 
+       <input type="password" name="password" value="{{password}}"> <i>Password</i> 
+
+      </div> 
+      <div class="inputBox"> 
+        <input type="password" name="repassword" value="{{repassword}}"> <i>Password again</i> 
+ 
+       </div> 
+      <div class="links"><a href="{% url "login" %}">Login</a> 
+      </div> 
+
+      <div class="inputBox"> 
+
+       <input type="submit" value="Register"> 
+
+      </div> 
+
+    </form> 
+
+    </div> 
+
+   </div> 
+{% endblock account %}

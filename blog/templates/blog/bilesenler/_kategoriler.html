@@ -1,0 +1,9 @@
+<div class="list-group" >
+    {% for j in kategoriler %}
+        {% if j.yol == selected_kategori %}
+        <a class="list-group-item list-group-item-action active kategori_grubu" href="{% url "hobies_by_categories" j.yol %}">{{j.name|title}} </a>
+        {% else %}
+        <a class="list-group-item list-group-item-action kategori_grubu" href="{% url "hobies_by_categories" j.yol %}">{{j.name|title}} </a>
+        {% endif %}
+    {% endfor %}
+</div>

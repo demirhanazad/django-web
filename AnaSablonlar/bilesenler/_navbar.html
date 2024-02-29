@@ -1,0 +1,18 @@
+    <li class="nav-item">
+        <a class="nav-link texttype-times" href="{% url "home" %}" id="{% if active_page == 'home' %}active{% endif %}"><b>Home</b></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link texttype-times" href="{% url "hobies" %}" id="{% if active_page == 'hobies' %}active{% endif %}"><b>My Hobbies</b></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link texttype-times" href="{% url "about" %}" id="{% if active_page == 'about' %}active{% endif %}"><b>About Me</b></a>
+    </li>
+    {% if active_page == "hobidetay" %}
+        <li class="nav-item">
+            <a class="nav-link texttype-times" href="{% url "hobies"%}#{{secim.yol}}-{{secim.id}}"><b>Return</b></a>
+        </li>
+    {% elif active_page == "hobies" %}
+    <li class="nav-item">
+        <a class="nav-link texttype-times" href="{% url "upload_hoby"%}"><b>New Hoby</b></a>
+    </li>
+    {% endif %}

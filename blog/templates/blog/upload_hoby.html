@@ -1,0 +1,18 @@
+{% extends "Base.html" %}
+{% block title %}<title>Home</title>{% endblock title %}
+{% block content %}
+    <div class="information">
+        {% if user.is_authenticated %}
+
+        <form method = "post" enctype="multipart/form-data" style="background-color: rgba(104, 114, 114, 0.58); border:3px solid grey; padding:1 1 1 1; min-width:324px; border-radius:3px; color: #ffffff;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload</button>
+        </form>
+
+        {% endif %}
+    </div>
+            <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]--> 
+{% endblock content %}

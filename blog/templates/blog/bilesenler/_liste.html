@@ -1,0 +1,28 @@
+{% load static %}
+{% if active_page == "hobies" %}
+<div class="list_scroll" id="{{item.yol}}-{{item.id}}">
+    <li class="hobies">
+        <u style="margin-left:1vw;">
+            {{item.title}}:
+        </u>
+        <a href="{% url "hoby_detail" item.yol item.id %}" >
+        <img class="hobies_photos" src="{{item.image.url}}" alt="{{item.title}}">
+        </a>
+        <ul style="font-size:1.2vw; margin-left:9vw; list-style-type:none;margin-bottom:2vh;">
+            <li>{{item.description|striptags|slice:"0:200"}}...</li>
+        </ul>
+    </li>
+</div>
+{% else %}
+<div class="list_scroll">
+    <li class="hobies">
+        <u style="margin-left:1vw;">
+            {{item.name}}:
+        </u>
+        <img class="hobies_photos" src="{{item.hotel_Main_Img.url}}" alt="{{item.name}}">
+        <ul style="font-size:1.2vw; margin-left:9vw; list-style-type:none;margin-bottom:2vh;">
+            <li>{{item.description|striptags|slice:"0:200"}}...</li>
+        </ul>
+    </li>
+</div>
+{% endif %}

@@ -1,0 +1,46 @@
+{% extends "Account.html" %}
+{% load static %}
+{% block title %}<title>login</title>{% endblock title %}
+{% block account %}
+<div class="signin"> 
+  
+    <div class="content"> 
+
+     <h2>Login</h2> 
+
+     <form class="form"  method="POST"> 
+        {% csrf_token %}
+        {% if error %}
+        <div class="alert alert-danger">
+            {{error}}
+
+        </div>
+        {% endif %}
+      <div class="inputBox"> 
+
+       <input type="text"  name="username" id="input1" onkeydown="if (event.keyCode == 13) document.getElementById('input2').focus()"> <i>Username</i> 
+
+      </div> 
+
+      <div class="inputBox"> 
+
+       <input type="password" name="password" id="input2" onkeydown="if (event.keyCode == 13) document.getElementById('buton').click()"> <i>Password</i> 
+
+      </div> 
+
+      <div class="links"> <a href="#">Forgot Password</a> <a href="{% url "register" %}">Register</a> 
+
+      </div> 
+
+      <div class="inputBox"> 
+
+       <input type="submit" id="buton" value="Login"> 
+
+      </div> 
+
+    </form> 
+
+    </div> 
+
+   </div> 
+{% endblock account %}

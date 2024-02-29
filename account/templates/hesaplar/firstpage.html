@@ -1,0 +1,22 @@
+{% extends "Account.html" %}
+{% load static %}
+{% block title %}<title>logout</title>{% endblock title %}
+{% block account %}
+<div class="signin"> 
+  
+    <div class="content"> 
+
+     <h2>Welcome</h2> 
+
+     <div class="form"> 
+      <div class="inputBox"> 
+
+        <div class="links"> <a href="{% url "login" %}">Login</a> <a href="{% url "register" %}">Register</a> 
+
+
+    </div> 
+
+    </div> 
+
+   </div> 
+{% endblock account %}

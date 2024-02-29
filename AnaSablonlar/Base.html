@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+{% include "bilesenler/_head.html" %}
+    {% block title %} {% endblock %}
+</head>
+<body >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-ozel" style="z-index: 5; position: absolute; width: 100%; top: 0px;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% static 'img/logo1.png' %}" target="_blank"><img id="sayfa_logosu" src="{% static 'img/logo1.png' %}" width="50" height="50" style="opacity:0.5; margin:0;"class="d-inline-block align-top" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {% if user.is_authenticated %}
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {% include "bilesenler/_navbar.html" %}
+                    </ul>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        {% if active_page == "home" %}
+                            <li class="nav-item">
+                                <a class="nav-link texttype-times" href="{% url "home" %}"><b>Welcome {{user.get_full_name|title}}</b></a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link texttype-times" href="{% url "logout" %}"><b>Logout</b></a>
+                        </li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link texttype-times" href="{% url "login" %}"><b>Login</b></a>
+                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link texttype-times" href="{% url "register" %}"><b>Register</b></a>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    {% block content %}{% endblock content %}
+    <div class="background-container">
+        <img id ="moon"style="width:200px; height:auto;"src="{% static 'img/moon2.png' %}" alt="">
+        <div class="stars" style="background: black url({% static 'img/stars.png' %} ) repeat;"></div>
+        <div class="twinkling" style="background: transparent url({% static 'img/twinkling.png' %} ) repeat;"></div>
+        <div class="clouds" style="background: transparent url({% static 'img/clouds_repeat.png' %} ) repeat;"></div>
+    </div>
+    <footer id="sayfa_sonu">
+        <div id="information">
+        <h6 style="font-size:2.1vw;">
+            Developed By Demirhan Adıgüzel {% if active_page == "hobidetay" %}{{secim.title}}{% else %}{{active_page|title}}{% endif %}
+        </h6> 
+    </div>
+    </footer>           
+    <script src="{% static 'js/bootstrap.js' %} "></script>
+</body>
+</html>
